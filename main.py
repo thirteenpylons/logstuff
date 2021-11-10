@@ -12,7 +12,7 @@ Author: Christian M. Fulton
 Date: 09.Nov.2021
 """
 
-from ffs import Manage
+from lib.ffs import Manage
 
 
 def main():
