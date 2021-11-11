@@ -27,7 +27,6 @@ def main():
 
     make_dir()
     
-    # make sure config.ini exists before running
     my_file = Manage(APP_LOCATION + '/' + get_dir() + '/' + fname)
 
     while loopin:
