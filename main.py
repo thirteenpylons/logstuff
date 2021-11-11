@@ -13,7 +13,7 @@ import configparser
 import os
 from os import path
 
-from ffs import Manage
+from lib.ffs import Manage
 
 APP_LOCATION = os.path.abspath('.')
 
