@@ -15,17 +15,19 @@ from os import path
 
 from lib.ffs import Manage
 
-APP_LOCATION = os.path.abspath('.')
+APP_LOCATION = os.path.abspath('logstuff')
 
 def main():
     """
     gather data
     """
+    check_config()
     loopin = True
     fname = input('Enter the name for your file: ')
 
     make_dir()
     
+    # make sure config.ini exists before running
     my_file = Manage(APP_LOCATION + '/' + get_dir() + '/' + fname)
 
     while loopin:
@@ -49,12 +51,22 @@ def config(args):
         config.write(cfile)
     print(f'Target directory changed to {this_arg}.')
 
+def check_config():
+    """
+    Checks directory for config. If config not in dir -> assign default
+    Default will be: foobar
+    """
+    if 'config.ini' not in os.listdir(APP_LOCATION):
+        default = ['foobar']
+        config(default)
+        print(f'Default directory {default} created... Use --config to change default.')
+
 def get_dir():
     """
     Retrieves the pointer stored in config
     """
     c = configparser.ConfigParser()
-    c.read('config.ini')
+    c.read(APP_LOCATION + '/' + 'config.ini')
     return c['WORKING_DIR']['Directory']
 
 def make_dir():
@@ -64,6 +76,7 @@ def make_dir():
     """
     if get_dir() not in os.listdir(APP_LOCATION):
         os.mkdir(APP_LOCATION + '/' + get_dir())
+        print(f'Successfully created directory {get_dir()}.')
 
 def execute(args):
     """
@@ -71,7 +84,8 @@ def execute(args):
     """
     err = 'Usage: python iLog -c [targer_dir]'
     if len(args) > 1:
-        config(args[1:2])
+        if '-c' in args[:1] or '--config' in args[:1]:
+            config(args[1:2])
     elif len(args) == 0:
         main()
     else:
