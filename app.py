@@ -14,8 +14,11 @@ import os
 from os import path
 
 from lib.ffs import Manage
+from lib import flagman
 
-APP_LOCATION = os.path.abspath('logstuff')
+
+# TODO: Move APP_LOCATION from both app.py and flagman.py into config.ini
+APP_LOCATION = os.path.abspath('iLog')
 
 def main():
     """
@@ -27,6 +30,7 @@ def main():
 
     make_dir()
     
+    # make sure config.ini exists before running
     my_file = Manage(APP_LOCATION + '/' + get_dir() + '/' + fname)
 
     while loopin:
@@ -35,32 +39,6 @@ def main():
             loopin = False
         else:
             my_file.write_line(usr_data)
-
-def config(args):
-    """
-    This function will create config.ini
-    """
-    config = configparser.ConfigParser()
-
-    this_arg = args.pop()
-
-    print('Writing to config...')
-    config['WORKING_DIR'] = {'Directory': this_arg}
-    with open(APP_LOCATION + '/' + 'config.ini', 'w') as cfile:
-        config.write(cfile)
-    print(f'Target directory changed to {this_arg}.')
-
-def check_config():
-    """
-    Checks directory for config. If config not in dir -> assign default
-    Default will be: foobar
-    """
-    if 'config.ini' not in os.listdir(APP_LOCATION):
-        default = ['foobar']
-        config(default)
-        # default pops before even printed
-        # probably should be checking get_dir() for config.ini existence
-        print(f'Default directory {default} created... Use --config to change default.')
 
 def get_dir():
     """
@@ -83,10 +61,9 @@ def execute(args):
     """
     point execution in right direction
     """
-    err = 'Usage: python iLog -c [targer_dir]'
+    err = 'Usage: python iLog <FLAG> [arg]'
     if len(args) > 1:
-        if '-c' in args[:1] or '--config' in args[:1]:
-            config(args[1:2])
+        flagman.flags(args)
     elif len(args) == 0:
         main()
     else:
