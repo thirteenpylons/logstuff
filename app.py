@@ -18,7 +18,7 @@ from lib import flagman
 
 
 # TODO: Move APP_LOCATION from both app.py and flagman.py into config.ini
-APP_LOCATION = os.path.abspath('iLog')
+APP_LOCATION = os.path.abspath('logstuff')
 
 def main():
     """
