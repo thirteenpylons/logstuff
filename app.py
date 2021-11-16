@@ -24,13 +24,12 @@ def main():
     """
     gather data
     """
-    check_config()
+    options.check_config()
     loopin = True
     fname = input('Enter the name for your file: ')
 
     make_dir()
     
-    # make sure config.ini exists before running
     my_file = Manage(APP_LOCATION + '/' + get_dir() + '/' + fname)
 
     while loopin:
