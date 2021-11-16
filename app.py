@@ -14,10 +14,10 @@ import os
 from os import path
 
 from lib.ffs import Manage
-from lib import flagman
+from lib import options
 
 
-# TODO: Move APP_LOCATION from both app.py and flagman.py into config.ini
+# TODO: Move APP_LOCATION from both app.py and options.py into config.ini
 APP_LOCATION = os.path.abspath('logstuff')
 
 def main():
@@ -63,7 +63,7 @@ def execute(args):
     """
     err = 'Usage: python iLog <FLAG> [arg]'
     if len(args) > 1:
-        flagman.flags(args)
+        options.flags(args)
     elif len(args) == 0:
         main()
     else:
