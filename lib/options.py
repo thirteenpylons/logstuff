@@ -8,6 +8,9 @@ import configparser
 import os
 
 
+# TODO: Move APP_LOCATION from both app.py and options.py into config.ini
+APP_LOCATION = os.path.abspath('logstuff')
+
 def flags(args):
     """
     When the program is executed, any flags will be pushed into here.
