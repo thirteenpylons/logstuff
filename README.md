@@ -1,5 +1,3 @@
-# logstuff
-
 
 ## Use:
     $ python logstuff

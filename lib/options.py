@@ -24,6 +24,7 @@ def flags(args):
     """
     err = 'Usage: python logstuff <OPTION> [arg]'
     # locate the '--' | '-' -> slice and parse
+
     if len(args) > 1:
         if '-c' in args[:1] or '--config' in args[:1]:
             config(args[1:2])
