@@ -7,7 +7,6 @@
     Change directory files are saved to:
         $ python logstuff --config <directory>
 
-
 ## Dependencies:
     configparser ~= 5.1.0
     ffs ~= 0.0.1 (stored locally in lib)
