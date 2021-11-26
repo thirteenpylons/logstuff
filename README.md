@@ -1,3 +1,5 @@
+# logstuff
+    Compatible with Windows, Linux, and Mac
 
 ## Use:
     $ python logstuff
