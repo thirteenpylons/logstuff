@@ -4,6 +4,8 @@ Build a idea logger
 Create a pointer for directory:
     calling py app -c or --config -> capability to edit config
     config dir: /something
+
+Args are parsed with the lib/options mod
     
 
 Author: Christian M. Fulton
@@ -58,9 +60,11 @@ def make_dir():
 
 def execute(args):
     """
-    point execution in right direction
+    Identify existing kwargs and args.
+    All kwargs/args will be pushed to lib/options.flags where they will
+    be parsed.
     """
-    err = 'Usage: python iLog <FLAG> [arg]'
+    err = 'Usage: python logstuff <FLAG> [arg]'
     if len(args) > 1:
         options.flags(args)
     elif len(args) == 0:

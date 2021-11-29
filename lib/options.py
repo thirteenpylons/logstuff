@@ -13,7 +13,8 @@ APP_LOCATION = os.path.abspath('logstuff')
 
 def flags(args):
     """
-    When the program is executed, any flags will be pushed into here.
+    When the program is executed, any flags/args will be pushed into here.
+    Parse flags and slice args pointing them to the right function.
 
     List all of the options and usage:
         Usage:
@@ -21,6 +22,7 @@ def flags(args):
         Options:
             [-c], [--config]    :: Choose directory to write to.
             [-a], [--append]    :: Append an existing file.
+    
     """
     err = 'Usage: python logstuff <OPTION> [arg]'
     # locate the '--' | '-' -> slice and parse
@@ -30,6 +32,13 @@ def flags(args):
             config(args[1:2])
     else:
         print(err)
+
+# is this needed? or should I be pushing flags -> ffs?
+def handle_append(a):
+    """
+    Handle the append arg
+    """
+    NotImplementedError
 
 def config(args):
     """
