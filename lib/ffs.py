@@ -4,6 +4,7 @@ File manipulation lib
 Author: Christian M. Fulton
 Date: 03.Nov.2021
 """
+import shutil
 import os
 from json import dumps
 from json import loads
