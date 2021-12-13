@@ -64,10 +64,10 @@ def execute(args):
     """
     point execution in right direction
     """
-    err = "Usage: python iLog <FLAG> [arg]"
     if len(args) > 1:
         options.flags(args)
     elif len(args) == 0:
         main()
     else:
+        err = "Usage: python iLog <FLAG> [arg]"
         print(err)
