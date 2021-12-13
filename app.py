@@ -18,7 +18,8 @@ from lib import options
 
 
 # TODO: Move APP_LOCATION from both app.py and options.py into config.ini
-APP_LOCATION = os.path.abspath('logstuff')
+APP_LOCATION = os.path.abspath("logstuff")
+
 
 def main():
     """
@@ -26,26 +27,28 @@ def main():
     """
     options.check_config()
     loopin = True
-    fname = input('Enter the name for your file: ')
+    fname = input("Enter the name for your file: ")
 
     make_dir()
-    
-    my_file = Manage(APP_LOCATION + '/' + get_dir() + '/' + fname)
+
+    my_file = Manage(APP_LOCATION + "/" + get_dir() + "/" + fname)
 
     while loopin:
-        usr_data = input('Enter the idea to log or to stop type !q: ')
-        if usr_data == '!q':
+        usr_data = input("Enter the idea to log or to stop type !q: ")
+        if usr_data == "!q":
             loopin = False
         else:
             my_file.write_line(usr_data)
+
 
 def get_dir():
     """
     Retrieves the pointer stored in config
     """
     c = configparser.ConfigParser()
-    c.read(APP_LOCATION + '/' + 'config.ini')
-    return c['WORKING_DIR']['Directory']
+    c.read(APP_LOCATION + "/" + "config.ini")
+    return c["WORKING_DIR"]["Directory"]
+
 
 def make_dir():
     """
@@ -53,14 +56,15 @@ def make_dir():
     ... If it doesn't exist -> create it
     """
     if get_dir() not in os.listdir(APP_LOCATION):
-        os.mkdir(APP_LOCATION + '/' + get_dir())
-        print(f'Successfully created directory {get_dir()}.')
+        os.mkdir(APP_LOCATION + "/" + get_dir())
+        print(f"Successfully created directory {get_dir()}.")
+
 
 def execute(args):
     """
     point execution in right direction
     """
-    err = 'Usage: python iLog <FLAG> [arg]'
+    err = "Usage: python iLog <FLAG> [arg]"
     if len(args) > 1:
         options.flags(args)
     elif len(args) == 0:
