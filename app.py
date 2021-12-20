@@ -31,7 +31,8 @@ def main():
 
     make_dir()
 
-    my_file = Manage(APP_LOCATION + "/" + get_dir() + "/" + fname)
+    if extension_is_txt:
+        my_file = Manage(APP_LOCATION + "/" + get_dir() + "/" + fname)
 
     while loopin:
         usr_data = input("Enter the idea to log or to stop type !q: ")
@@ -65,7 +66,13 @@ def execute(args):
     point execution in right direction
     """
     if len(args) > 1:
-        options.flags(args)
+        if "-e" in args[:1] or "--extension" in args[:1]:
+            extension_is_txt = False
+            # here with where I should define the extension that should
+            # be pushed through up in main()
+        else:
+            extension_is_txt = True
+            options.flags(args)
     elif len(args) == 0:
         main()
     else:
