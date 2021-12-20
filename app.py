@@ -20,7 +20,7 @@ from lib import options
 # TODO: Move APP_LOCATION from both app.py and options.py into config.ini
 APP_LOCATION = os.path.abspath('logstuff')
 
-def main():
+def main() -> None:
     """
     gather data
     """
@@ -39,7 +39,7 @@ def main():
         else:
             my_file.write_line(usr_data)
 
-def get_dir():
+def get_dir() -> str:
     """
     Retrieves the pointer stored in config
     """
@@ -47,7 +47,7 @@ def get_dir():
     c.read(APP_LOCATION + '/' + 'config.ini')
     return c['WORKING_DIR']['Directory']
 
-def make_dir():
+def make_dir() -> None:
     """
     Check to see if dir exists from config pointer
     ... If it doesn't exist -> create it
@@ -56,7 +56,7 @@ def make_dir():
         os.mkdir(APP_LOCATION + '/' + get_dir())
         print(f'Successfully created directory {get_dir()}.')
 
-def execute(args):
+def execute(args) -> None:
     """
     point execution in right direction
     """

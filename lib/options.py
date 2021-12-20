@@ -11,7 +11,7 @@ import os
 # TODO: Move APP_LOCATION from both app.py and options.py into config.ini
 APP_LOCATION = os.path.abspath('logstuff')
 
-def flags(args):
+def flags(args) -> None:
     """
     When the program is executed, any flags will be pushed into here.
 
@@ -31,7 +31,7 @@ def flags(args):
     else:
         print(err)
 
-def config(args):
+def config(args) -> None:
     """
     This function will create config.ini
     """
@@ -45,7 +45,7 @@ def config(args):
         config.write(cfile)
     print(f'Target directory changed to {this_arg}.')
 
-def check_config():
+def check_config() -> None:
     """
     Checks directory for config. If config not in dir -> assign default
     Default will be: foobar
@@ -57,7 +57,7 @@ def check_config():
         # probably should be checking get_dir() for config.ini existence
         print(f'Default directory {default} created... Use --config to change default.')
 
-def set_location():
+def set_location() -> None:
     """
     Set the app location in the config
     """
