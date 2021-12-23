@@ -12,7 +12,7 @@ import os
 APP_LOCATION = os.path.abspath("logstuff")
 
 
-def flags(args):
+def flags(args) -> None:
     """
     When the program is executed, any flags will be pushed into here.
 
@@ -48,7 +48,7 @@ def config(args):
     print(f"Target directory changed to {this_arg}.")
 
 
-def check_config():
+def check_config() -> None:
     """
     Checks directory for config. If config not in dir -> assign default
     Default will be: foobar
@@ -61,7 +61,7 @@ def check_config():
         print(f"Default directory {default} created... Use --config to change default.")
 
 
-def set_location():
+def set_location() -> None:
     """
     Set the app location in the config
     """

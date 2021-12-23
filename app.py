@@ -21,7 +21,7 @@ from lib import options
 APP_LOCATION = os.path.abspath("logstuff")
 
 
-def main():
+def main() -> None:
     """
     gather data
     """
@@ -41,7 +41,7 @@ def main():
             my_file.write_line(usr_data)
 
 
-def get_dir():
+def get_dir() -> str:
     """
     Retrieves the pointer stored in config
     """
@@ -50,7 +50,7 @@ def get_dir():
     return c["WORKING_DIR"]["Directory"]
 
 
-def make_dir():
+def make_dir() -> None:
     """
     Check to see if dir exists from config pointer
     ... If it doesn't exist -> create it
@@ -60,7 +60,7 @@ def make_dir():
         print(f"Successfully created directory {get_dir()}.")
 
 
-def execute(args):
+def execute(args) -> None:
     """
     point execution in right direction
     """
